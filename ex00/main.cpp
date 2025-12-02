@@ -2,8 +2,6 @@
 #include <string>
 #include "ClapTrap.hpp"
 
-// 色コードは文字列リテラルで定義する
-#define BLACK   "\033[0;30m"
 #define RED     "\033[0;31m"
 #define GREEN   "\033[0;32m"
 #define YELLOW  "\033[0;33m"
@@ -12,22 +10,91 @@
 #define CYAN    "\033[0;36m"
 #define WHITE   "\033[0;37m"
 #define RESET   "\033[0m"
+#define B_RED	"\033[1;31m"
+#define B_GREEN "\033[1;32m"
+#define B_CYAN  "\033[1;36m"
 
-void printcolor(std::string const& str, std::string const& color) {
-    std::cout << color << str << std::endl;
+void printColor(std::string const& str, std::string const& color) {
+    std::cout
+	<< RESET << "======="
+	<< color << str
+	<< RESET << "=======" << color << std::endl;
 }
 
-
-void resetcolor() {
-    std::cout << RESET << std::endl;
-}
+void testClap();
 
 int main(void) {
+	testClap();
+	std::cout << std::endl;
+}
 
-	printcolor("INITIALIZATION", CYAN);
+void printStatus(ClapTrap &trap) {
+	std::cout
+		<< "Name: " << trap.getName()
+		<< " HP: " << trap.getHitPoints()
+		<< " EP: " << trap.getEnergyPoints()
+		<< std::endl;
+}
+
+void testClap() {
+
+	printColor("ClapTrap TEST", B_GREEN);
+	std::cout << std::endl;
+
+	printColor("INITIALIZATION", CYAN);
 	ClapTrap a;
 	ClapTrap b("B");
 	ClapTrap c(b);
 	ClapTrap d = c;
 	a = d;
+	std::cout << std::endl;
+
+	printColor("ATTACK", MAGENTA);
+	for(int i = 1; i < 12; ++i) {
+		std::cout << i << ": ";
+		a.attack("d");
+		printStatus(a);
+	}
+	std::cout << std::endl;
+	printColor("REPAIR", GREEN);
+	for (int i = 1; i < 12; ++i) {
+		std::cout << i << ": ";
+		b.beRepaired(1);
+		printStatus(b);
+	}
+	std::cout << std::endl;
+
+	printColor("TAKE DAMAGE", RED);
+	c.takeDamage(5);
+	printStatus(c);
+	c.takeDamage(100);
+	printStatus(c);
+	c.takeDamage(0);
+	printStatus(c);
+	c.attack("d");
+	printStatus(c);
+	c.beRepaired(100);
+	printStatus(c);
+	std::cout << std::endl;
+
+	printColor("POINT", B_CYAN);
+	ClapTrap *p = new ClapTrap("P");
+	p->attack("d");
+	p->beRepaired(10);
+	p->takeDamage(10);
+	delete p;
+	std::cout << std::endl;
+
+	printColor("ERROR", B_RED);
+	d.beRepaired(2147483647);
+	printStatus(d);
+	d.takeDamage(-1);
+	printStatus(d);
+	d.takeDamage(2147483647);
+	printStatus(d);
+	d.takeDamage(2147483647);
+	printStatus(d);
+	std::cout << std::endl;
+
+	printColor("DESTRUCTOR", YELLOW);
 }
