@@ -41,7 +41,7 @@ void FragTrap::highFiveGuys() {
 	if(energy_points_ == 1) --energy_points_;
 	else 					energy_points_ = 1;
 
-	std::cout << className() << name_ << ": Powering up five teammates!" << std::endl;
+	std::cout << className() << name_ << ": Hey Guys!!!" << std::endl;
 }
 
 std::string FragTrap::className() const { return "FragTrap "; }

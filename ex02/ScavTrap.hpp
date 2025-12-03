@@ -4,11 +4,11 @@
 #include "ClapTrap.hpp"
 
 class ScavTrap : public ClapTrap {
- protected:
+ private:
 	static int const default_hit_points;
   	static int const default_energy_points;
   	static int const default_attack_damage;
-	
+
 	virtual std::string className() const;
 
  public:

@@ -171,7 +171,7 @@ void testScav() {
 	std::cout << std::endl;
 
 	{
-	printColor("POINT", B_CYAN);
+	printColor("POINT", WHITE);
 	ClapTrap *p = new ScavTrap("P"); //基底クラスに派生クラスのポインタ
 	p->attack("d");
 	printStatus(*p);
@@ -180,7 +180,7 @@ void testScav() {
 	p->takeDamage(10);
 	printStatus(*p);
 	delete p;
-	
+
 	std::cout << std::endl;
 	ScavTrap f("F");
 	ClapTrap& s = f; //基底クラスに派生クラスの参照

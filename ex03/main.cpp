@@ -2,6 +2,7 @@
 #include <string>
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 #define BLACK   "\033[0;30m"
 #define RED     "\033[0;31m"
@@ -25,14 +26,17 @@ void printColor(std::string const& str, std::string const& color) {
 
 //void testClap();
 //void testScav();
-void testFrag();
+//void testFrag();
+void testDiamond();
 
 int main(void) {
 	// testClap();
 	// std::cout << std::endl;
 	// testScav();
 	// std::cout << std::endl;
-	testFrag();
+	// testFrag();
+	// std::cout << std::endl;
+	testDiamond();
 	std::cout << std::endl;
 }
 
@@ -109,13 +113,13 @@ void printStatus(ClapTrap &trap) {
 // 	printColor("DESTRUCTOR", YELLOW);
 // }
 
-// void printStatus(ScavTrap &trap) {
-// 	std::cout
-// 		<< "Name: " << trap.getName()
-// 		<< " HP: " << trap.getHitPoints()
-// 		<< " EP: " << trap.getEnergyPoints()
-// 		<< std::endl;
-// }
+void printStatus(ScavTrap &trap) {
+	std::cout
+		<< "Name: " << trap.getName()
+		<< " HP: " << trap.getHitPoints()
+		<< " EP: " << trap.getEnergyPoints()
+		<< std::endl;
+}
 
 // void testScav() {
 // 	printColor("ScavTrap TEST", B_GREEN);
@@ -212,17 +216,115 @@ void printStatus(FragTrap &trap) {
 		<< std::endl;
 }
 
-void testFrag() {
-	printColor("FragTrap TEST", B_GREEN);
+// void testFrag() {
+// 	printColor("FragTrap TEST", B_GREEN);
+// 	std::cout << std::endl;
+
+// 	printColor("INITIALIZATION", CYAN);
+// 	FragTrap a;
+// 	FragTrap b("B");
+// 	FragTrap c(b);
+// 	FragTrap d = c;
+// 	a = d;
+// 	FragTrap e("rob");
+// 	std::cout << std::endl;
+
+// 	printColor("ATTACK", MAGENTA);
+// 	for(int i = 1; i < 5; ++i) {
+// 		std::cout << i << ": ";
+// 		a.attack("d");
+// 		printStatus(a);
+// 	}
+// 	a.setEnergyPoints(0);
+// 	std::cout << "setEnergyPoints(0)" <<std::endl;
+// 	printStatus(a);
+// 	a.attack("d");
+// 	printStatus(a);
+// 	std::cout << std::endl;
+// 	printColor("REPAIR", GREEN);
+// 	for (int i = 1; i < 5; ++i) {
+// 		std::cout << i << ": ";
+// 		b.beRepaired(1);
+// 		printStatus(b);
+// 	}
+// 	b.setEnergyPoints(0);
+// 	std::cout << "setEnergyPoints(0)" <<std::endl;
+// 	printStatus(b);
+// 	b.beRepaired(10);
+// 	printStatus(b);
+// 	std::cout << std::endl;
+
+// 	printColor("TAKE DAMAGE", RED);
+// 	c.takeDamage(5);
+// 	printStatus(c);
+// 	c.takeDamage(100);
+// 	printStatus(c);
+// 	c.takeDamage(0);
+// 	printStatus(c);
+// 	c.attack("d");
+// 	printStatus(c);
+// 	c.beRepaired(100);
+// 	printStatus(c);
+// 	std::cout << std::endl;
+
+// 	printColor("SPECIAL ABILITY", BLUE);
+// 	e.highFiveGuys();
+// 	e.highFiveGuys();
+// 	e.highFiveGuys();
+// 	std::cout << std::endl;
+
+// 	{
+// 	printColor("POINT", B_CYAN);
+// 	ClapTrap *p = new FragTrap("P");
+// 	p->attack("d");
+// 	printStatus(*p);
+// 	p->beRepaired(10);
+// 	printStatus(*p);
+// 	p->takeDamage(10);
+// 	printStatus(*p);
+// 	delete p;
+
+// 	std::cout << std::endl;
+// 	FragTrap f("F");
+// 	ClapTrap& s = f;
+// 	s.attack("d");
+// 	printStatus(f);
+// 	}
+// 	std::cout << std::endl;
+
+// 	printColor("ERROR", B_RED);
+// 	d.beRepaired(2147483647);
+// 	printStatus(d);
+// 	d.takeDamage(-1);
+// 	printStatus(d);
+// 	d.takeDamage(2147483647);
+// 	printStatus(d);
+// 	d.takeDamage(2147483647);
+// 	printStatus(d);
+// 	std::cout << std::endl;
+
+// 	printColor("DESTRUCTOR", YELLOW);
+// }
+
+void printStatus(DiamondTrap &trap) {
+	std::cout
+		<< "Name: " << trap.getName()
+		<< " HP: " << trap.getHitPoints()
+		<< " EP: " << trap.getEnergyPoints()
+		<< std::endl;
+}
+
+void testDiamond() {
+	printColor("DiamondTrap TEST", B_GREEN);
 	std::cout << std::endl;
 
 	printColor("INITIALIZATION", CYAN);
-	FragTrap a;
-	FragTrap b("B");
-	FragTrap c(b);
-	FragTrap d = c;
+	DiamondTrap a;
+	DiamondTrap b("B");
+	DiamondTrap c(b);
+	DiamondTrap d = c;
 	a = d;
-	FragTrap e("rob");
+	DiamondTrap e("rob");
 	std::cout << std::endl;
 
 	printColor("ATTACK", MAGENTA);
@@ -267,24 +369,63 @@ void testFrag() {
 	e.highFiveGuys();
 	e.highFiveGuys();
 	e.highFiveGuys();
+	e.setEnergyPoints(3);
+	std::cout << "setEnergyPoints(3)" <<std::endl;
+	e.highFiveGuys();
+	e.highFiveGuys();
+	e.highFiveGuys();
+	e.setEnergyPoints(3);
+	std::cout << "setEnergyPoints(3)" <<std::endl;
+	e.whoAmI();
+	e.whoAmI();
+	e.whoAmI();
 	std::cout << std::endl;
 
 	{
-	printColor("POINT", B_CYAN);
-	ClapTrap *p = new FragTrap("P");
+	printColor("POINT", WHITE);
+	ClapTrap *p = new DiamondTrap("P");
+
 	p->attack("d");
+	printStatus(*p);
+	p->ClapTrap::attack("enemy");
 	printStatus(*p);
 	p->beRepaired(10);
 	printStatus(*p);
 	p->takeDamage(10);
 	printStatus(*p);
 	delete p;
-
 	std::cout << std::endl;
-	FragTrap f("F");
+
+	ScavTrap *st = new DiamondTrap("St");
+	st->attack("d");
+	printStatus(*st);
+	st->beRepaired(10);
+	printStatus(*st);
+	st->takeDamage(10);
+	printStatus(*st);
+	delete st;
+	std::cout << std::endl;
+
+	FragTrap *ft = new DiamondTrap("Ft");
+	ft->attack("d");
+	printStatus(*ft);
+	ft->beRepaired(10);
+	printStatus(*ft);
+	ft->takeDamage(10);
+	printStatus(*ft);
+	delete ft;
+	std::cout << std::endl;
+
+	DiamondTrap f("F");
 	ClapTrap& s = f;
+	ScavTrap& sc = f;
+	FragTrap& fg = f;
 	s.attack("d");
 	printStatus(f);
+	sc.attack("d");
+	printStatus(sc);
+	fg.attack("d");
+	printStatus(fg);
 	}
 	std::cout << std::endl;
 

@@ -12,17 +12,19 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 	using FragTrap::default_attack_damage;
 	using FragTrap::default_hit_points;
 	using ScavTrap::default_energy_points;
+	//usingで派生のスコープにその名前を持ち込み、曖昧さ回避や名前の隠蔽を防ぐ
 
  	virtual std::string className() const ;
 
  public:
     DiamondTrap();
     DiamondTrap(const std::string& name);
-    DiamondTrap(const DiamondTrap& other);
-    DiamondTrap& operator=(const DiamondTrap& other);
+    DiamondTrap(const DiamondTrap& trap);
+    DiamondTrap& operator=(const DiamondTrap& trap);
     ~DiamondTrap();
 
 	void whoAmI();
+
 	using ScavTrap::attack;
 };
 

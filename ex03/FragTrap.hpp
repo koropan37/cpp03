@@ -16,7 +16,7 @@ class FragTrap : virtual public ClapTrap {
 	FragTrap(const std::string& name);
 	FragTrap& operator=(const FragTrap& trap);
 	FragTrap(const FragTrap& trap);
-	~FragTrap();
+	~FragTrap(); //基底にvirtualがあれば、派生は暗黙的にvirtual
 
 	void highFiveGuys();
 };

@@ -270,7 +270,7 @@ void testFrag() {
 	std::cout << std::endl;
 
 	{
-	printColor("POINT", B_CYAN);
+	printColor("POINT", WHITE);
 	ClapTrap *p = new FragTrap("P");
 	p->attack("d");
 	printStatus(*p);
